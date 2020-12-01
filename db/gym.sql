@@ -20,7 +20,7 @@ CREATE TABLE gym_members (
     
 CREATE TABLE gym_bookings (
   id SERIAL PRIMARY KEY,
-  gym_class_id  INT REFERENCES gym_classes(id) ON DELETE CASCADE,
-  gym_member_id INT REFERENCES gym_members(id) ON DELETE CASCADE,
+  gym_class_id  SERIAL REFERENCES gym_classes(id) ON DELETE CASCADE,
+  gym_member_id SERIAL REFERENCES gym_members(id) ON DELETE CASCADE,
   review TEXT
 );

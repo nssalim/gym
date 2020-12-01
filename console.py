@@ -13,17 +13,29 @@ gym_booking_repository.delete_all()
 gym_class_repository.delete_all()
 gym_member_repository.delete_all()
 
-member_1 = Gym_Member("Jane")
+
+member_1 = Gym_Member("John")
 gym_member_repository.save(member_1)
 
-member_2 = Gym_Member("Peter")
+member_2 = Gym_Member("Paul")
 gym_member_repository.save(member_2)
 
-member_3 = Gym_Member("John")
+member_3 = Gym_Member("Ringo")
 gym_member_repository.save(member_3)
 
-member_4 = Gym_Member("Joy")
+member_4 = Gym_Member("George")
 gym_member_repository.save(member_4)
+
+member_5 = Gym_Member("Kate")
+gym_member_repository.save(member_4)
+
+member_6 = Gym_Member("Joy")
+gym_member_repository.save(member_4)
+
+member_7 = Gym_Member("Jane")
+gym_member_repository.save(member_4)
+
+
 
 class_1 = Gym_Class("yoga")
 gym_class_repository.save(class_1)
@@ -40,21 +52,42 @@ gym_class_repository.save(class_4)
 class_5 = Gym_Class("cycle class")
 gym_class_repository.save(class_5)
 
+class_6 = Gym_Class("aerobics")
+gym_class_repository.save(class_6)
+
+class_7 = Gym_Class("box fit")
+gym_class_repository.save(class_7)
 
 
 booking_1 = Gym_Booking(member_1, class_1)
 gym_booking_repository.save(booking_1)
 
-booking_1 = Gym_Booking(member_4, class_1)
-gym_booking_repository.save(booking_4)
-
-
 booking_2 = Gym_Booking(member_2, class_2)
 gym_booking_repository.save(booking_2)
 
-
 booking_3 = Gym_Booking(member_3, class_3)
-gym_booking_repository.save(booking_1)
+gym_booking_repository.save(booking_3)
+
+booking_4 = Gym_Booking(member_4, class_1)
+gym_booking_repository.save(booking_4)
+
+booking_5 = Gym_Booking(member_1, class_2)
+gym_booking_repository.save(booking_5)
+
+booking_6 = Gym_Booking(member_2, class_5)
+gym_booking_repository.save(booking_6)
+
+booking_7 = Gym_Booking(member_4, class_4)
+gym_booking_repository.save(booking_7)
+
+booking_8 = Gym_Booking(member_3, class_6)
+gym_booking_repository.save(booking_8)
+
+booking_9 = Gym_Booking(member_4, class_7)
+gym_booking_repository.save(booking_9)
+
+booking_10 = Gym_Booking(member_4, class_2)
+gym_booking_repository.save(booking_10)
 
 
 pdb.set_trace()
