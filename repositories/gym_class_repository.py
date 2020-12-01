@@ -2,87 +2,59 @@ from db.run_sql import run_sql
 from models.gym_member import Gym_Member
 from models.gym_class import Gym_Class
 from models.gym_booking import Gym_Booking
-import repositories.zombie_type_repository as zombie_type_repository
+import repositories.gym_member_repository as gym_member_repository
 
-def save(gym_booking):
-    sql = "INSERT INTO gym_bookings (name, zombie_type_id) VALUES (%s, %s) RETURNING id"
-    values = [zombie.name, zombie.zombie_type.id]
+
+def save(gym_class):
+    sql = "INSERT INTO gym_class (name, capacity, fill_up_occupancy, size_of_class, gym_class_id) VALUES (%s, %s, %s, %s, %s) RETURNING id"
+    values = [gym_class.name, gym_class.capacity, gym_class.fill_up_occupancy, gym_class.size_of_class, gym_class.gym_class.id]
     results = run_sql(sql, values)
     id = results[0]['id']
-    zombie.id = id
+    gym_class.id = id
 
 
 def select_all():
-    zombies = []
-    sql = "SELECT * FROM zombies"
+    gym_classes = []
+    sql = "SELECT * FROM gym_classes"
     results = run_sql(sql)
     for result in results:
-        zombie_type = zombie_type_repository.select(result["zombie_type_id"])
-        zombie = Zombie(result["name"], zombie_type, result["id"])
-        zombies.append(zombie)
-    return zombies
+        gym_member = gym_member_repository.select(result["gym_member_id"])
+        gym_class = Gym_Class(result["details"], gym_member, result["id"])
+        gym_classes.append(gym_class)
+    return gym_classes
 
 
 def select(id):
-    sql = "SELECT * FROM zombies WHERE id = %s"
+    sql = "SELECT * FROM gym_classes WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
-    zombie_type = zombie_type_repository.select(result["zombie_type_id"])
-    zombie = Zombie(result["name"], zombie_type, result["id"])
-    return zombie
+    gym_member = gym_member_repository.select(result["gym_member_id"])
+    gym_class = Gym_Class(result["details"], gym_member, result["id"])
+    return gym_class
 
 
 def delete_all():
-    sql = "DELETE FROM zombies"
+    sql = "DELETE FROM gym_classes"
     run_sql(sql)
 
-
 def delete(id):
-    sql = "DELETE FROM zombies WHERE id = %s"
+    sql = "DELETE FROM gym_classes WHERE id = %s"
     values = [id]
     run_sql(sql, values)
 
 
-def update(zombie):
-    sql = "UPDATE zombies SET (name, zombie_type_id) = (%s, %s) WHERE id = %s"
-    values = [zombie.name, zombie.zombie_type.id, zombie.id]
+def update(gym_class):
+    sql = "UPDATE gym_classes SET (name, capacity, fill_up_occupancy, size_of_class, gym_class_id) = (%s, %s, %s, %s, %s) WHERE id = %s"
+    values = [gym_class.name, gym_class.capacity, gym_class.fill_up_occupancy, gym_class.size_of_class, gym_class.id]
     run_sql(sql, values)
 
 
-def select_victims_of_zombie(id):
-    victims = []
-    sql = "SELECT humans.* FROM humans INNER JOIN bitings ON bitings.human_id = humans.id WHERE bitings.zombie_id = %s"
-    values = [id]
-    results = run_sql(sql, values)
+def select_occupancy_of_gym_class(id):
+attending_members = []
+sql = "SELECT gym_members.* FROM gym_members INNER JOIN gym_bookings ON bookings.gym_member_id = gym_members.id WHERE gym_bookings.gym_class_id = %s"
+values = [id]
+results = run_sql(sql, values)
     for result in results:
-        human = Human(result["name"])
-        victims.append(human)
-    return victims
-
-
-
-
-
-
-
-
-def delete_all():
-    sql = "DELETE FROM gym_class"
-    run_sql(sql)
-
-
-def delete(id):
-    sql = "DELETE FROM gym_class WHERE id = %s"
-    values = [id]
-    run_sql(sql, values)
-
-
-    def select_number_of_bookings(id):
-    bookings = []
-    sql = "SELECT gym_members.* FROM gym_members INNER JOIN gym_bookings ON bookings.gym_member_id = gym_members.id WHERE gym_bookings.gym_class_id = %s"
-    values = [id]
-    results = run_sql(sql, values)
-    for result in results:
-        gym_member = Gym_Member(result["name"])
-        gym_bookings.append(gym_member)
-    return gym_bookingss
+        gym_member = Gym_Member(result["details"])
+        attending_members.append(gym_member)
+    return attending_members
