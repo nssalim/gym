@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gym</title>
+  <link href="https://fonts.googleapis.com/css?family=Merriweather|Special+Elite" rel="stylesheet">
+  
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/buttons.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/tables.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Gym App</h1>
+        <nav>
+            <ul class="menu">
+                <li><a href="/">Home</a></li>
+                <li>
+                    Gym Classes
+                    <ul>
+                        <li><a href="/gym_classes">All</a></li>
+                        <li><a href="/gym_classes/new">Add</a></li>
+                    </ul>
+                </li>
+                <li>
+                    Gym Members
+                    <ul>
+                        <li><a href="/gym_members">All</a></li>
+                        <li><a href="/gym_members/new">Add</a></li>
+                    </ul>
+                </li>
+                <li>
+                    Gym Bookings
+                    <ul>
+                        <li><a href="/gym_bookings">All</a></li>
+                        <li><a href="/gym_bookings/new">Add</a></li>
+                    </ul>
+                </li>
+                
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

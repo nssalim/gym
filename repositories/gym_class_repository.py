@@ -1,7 +1,8 @@
 from db.run_sql import run_sql
-from models.gym_member import Gym_Member
 from models.gym_class import Gym_Class
 from models.gym_booking import Gym_Booking
+
+from models.gym_member import Gym_Member
 import repositories.gym_member_repository as gym_member_repository
 
 
@@ -50,11 +51,11 @@ def update(gym_class):
 
 
 def select_occupancy_of_gym_class(id):
-attending_members = []
-sql = "SELECT gym_members.* FROM gym_members INNER JOIN gym_bookings ON bookings.gym_member_id = gym_members.id WHERE gym_bookings.gym_class_id = %s"
-values = [id]
-results = run_sql(sql, values)
+    attending_members = []
+    sql = "SELECT gym_members.* FROM gym_members INNER JOIN gym_bookings ON bookings.gym_member_id = gym_members.id WHERE gym_bookings.gym_class_id = %s"
+    values = [id]
+    results = run_sql(sql, values)
     for result in results:
         gym_member = Gym_Member(result["details"])
         attending_members.append(gym_member)
-    return attending_members
+    return attending_members    

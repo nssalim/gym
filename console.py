@@ -14,25 +14,25 @@ gym_class_repository.delete_all()
 gym_member_repository.delete_all()
 
 
-member_1 = Gym_Member("John")
+member_1 = Gym_Member("John", "Jones", "22", "0/141 454 4231", "john.jones@hotmail.com")
 gym_member_repository.save(member_1)
 
-member_2 = Gym_Member("Paul")
+member_2 = Gym_Member("Paul" "Jackson", "34", "0/131 643 7567", "paul.jackson@mymail.com")
 gym_member_repository.save(member_2)
 
-member_3 = Gym_Member("Ringo")
+member_3 = Gym_Member("Andrew" "Smith", "21", "0/121 123 456 7890", "ringo.smith@gmail.com")
 gym_member_repository.save(member_3)
 
-member_4 = Gym_Member("George")
+member_4 = Gym_Member("George" "Tucker", "54", "0/131 321 5464", "george.tucker@gmail.com")
+gym_member_repository.save(member_4)
+ 
+member_5 = Gym_Member("Kate", "Munro", "23", "0/141 980 8673", "kate.munro@yahoo.com")
 gym_member_repository.save(member_4)
 
-member_5 = Gym_Member("Kate")
+member_6 = Gym_Member("Joy" "Wilby", "50", "0/134 547 7310", "joy.wilby@hotmail.com")
 gym_member_repository.save(member_4)
 
-member_6 = Gym_Member("Joy")
-gym_member_repository.save(member_4)
-
-member_7 = Gym_Member("Jane")
+member_7 = Gym_Member("Andrew" "German", "31", "0/543 376 1209", "jane.german@gmail.com")
 gym_member_repository.save(member_4)
 
 
