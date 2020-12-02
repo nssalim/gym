@@ -1,0 +1,9 @@
+<h2>{{ gym_class.name }}</h2>
+<p>Type: {{ gym_class.gym_member.name }}</p>
+
+<h3>Attending Members</h3>
+<ul>
+    {% for attending_member in attending_members %}
+    <li>{{ attending_member.name }}</li>
+    {% endfor %}
+</ul>

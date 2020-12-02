@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Update a Biting</h2>
+
+<form action="/gym_bookings/{{ gym_booking.id }}" method="POST">
+    <div>
+        <label for="gym_member">Gym Member:</label>
+        <select name="gym_member_id" id="gym_member">
+            {% for gym_member in gym_members %}
+            <option value="{{ gym_member.id }}" {% if gym_member.id == gym_booking.gym_member.id %} selected {% endif %}>
+                {{ gym_member.name }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label for="gym_class">Gym Class:</label>
+        <select name="gym_class_id" id="gym_class">
+            {% for gym_class in gym_classes %}
+            <option value="{{ gym_class.id }}" {% if gym_class.id == gym_booking.gym_class.id %} selected {% endif %}>
+                {{ gym_class.name }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <input type="submit">
+    </div>
+</form>
+
+{% endblock %}
