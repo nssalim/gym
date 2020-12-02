@@ -48,7 +48,7 @@ def delete(id):
     run_sql(sql, values)
 
 
-def update(biting):
+def update(gym_booking):
     sql = "UPDATE gym_bookings SET (gym_member_id, gym_class_id) = (%s, %s) WHERE id = %s"
     values = [gym_booking.gym_member.id, gym_booking.gym_class.id, gym_booking.id]
     run_sql(sql, values)

@@ -7,8 +7,8 @@ import repositories.gym_member_repository as gym_member_repository
 
 
 def save(gym_class):
-    sql = "INSERT INTO gym_class (name, capacity, fill_up_occupancy, size_of_class, gym_class_id) VALUES (%s, %s, %s, %s, %s) RETURNING id"
-    values = [gym_class.name, gym_class.capacity, gym_class.fill_up_occupancy, gym_class.size_of_class, gym_class.gym_class.id]
+    sql = "INSERT INTO gym_classes (name, capacity) VALUES (%s, %s) RETURNING id"
+    values = [gym_class.name, gym_class.capacity]
     results = run_sql(sql, values)
     id = results[0]['id']
     gym_class.id = id
@@ -43,7 +43,7 @@ def delete(id):
     values = [id]
     run_sql(sql, values)
 
-
+# To fix later
 def update(gym_class):
     sql = "UPDATE gym_classes SET (name, capacity, fill_up_occupancy, size_of_class, gym_class_id) = (%s, %s, %s, %s, %s) WHERE id = %s"
     values = [gym_class.name, gym_class.capacity, gym_class.fill_up_occupancy, gym_class.size_of_class, gym_class.id]

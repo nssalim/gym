@@ -1,6 +1,6 @@
 from flask import Blueprint, Flask, redirect, render_template, request
 
-from models.gym_member import Gym_member
+from models.gym_member import Gym_Member
 import repositories.gym_member_repository as gym_member_repository
 
 gym_members_blueprint = Blueprint("gym_member", __name__)
