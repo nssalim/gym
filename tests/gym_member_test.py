@@ -6,7 +6,7 @@ class TestGym_Member(unittest.TestCase):
 
     def setUp(self):
         self.member_1 = Gym_Member("James", "Bond", 36, "30 Wellington Square, Chelsea", "02038805903", "james.bond@zoho.com", "True", "007", "True")
-
+    
     def test_member_has_first_name(self):
         self.assertEqual("James", self.member_1.first_name)
 

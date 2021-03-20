@@ -1,7 +1,6 @@
 class Gym_Class:
-    def __init__(self, title, category, duration, capacity, intensity, difficulty, date, time, location, id=None):
+    def __init__(self, title, duration, capacity, intensity, difficulty, date, time, location, id=None):
         self.title = title
-        self.category = category
         self.duration = duration
         self.capacity = capacity
         self.intensity = intensity
