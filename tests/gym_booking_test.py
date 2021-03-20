@@ -8,8 +8,8 @@ class TestGymBookingClass(unittest.TestCase):
     def setUp(self):
         self.member_1 = Gym_Member("James", "Bond", 36, "30 Wellington Square, Chelsea", "02038805903", "james.bond@zoho.com", "True", "007", "True" )
         self.class_1 = Gym_Class("Yoga", "45 minutes", 20, "Low", "Moderate", "05/03/2021", "09:15", "Sky Blue Studio")
-        self.category_1 = Gym_Category("Conditioning")
-        self.booking_1 = Gym_Booking("James Bond",  "Yoga", "Conditioning", 7, 20)
+        self.category_1 = Gym_Category("Flex and Core")
+        self.booking_1 = Gym_Booking("James Bond",  "Yoga", "Flex and Core", 7, 20)
 
     def test_can_test(self):
         self.assertEqual(True, True)
@@ -35,7 +35,7 @@ class TestGymBookingClass(unittest.TestCase):
         self.assertEqual("Yoga", self.booking_1.gym_class)
 
     def test_booking_has_category(self):
-        self.assertEqual("Conditioning", self.booking_1.gym_category)
+        self.assertEqual("Flex and Core", self.booking_1.gym_category)
 
     def test_booking_has_class_date(self):
         self.assertEqual("05/03/2021", self.class_1.date)
