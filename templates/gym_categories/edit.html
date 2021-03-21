@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Update Gym Category Details</h2>
+
+<form action="/gym_categories/{{ gym_category.id }}" method="POST">
+    <div>
+        <label for="category">Category:</label>
+        <input type="text" id="category" category="category" value="{{ gym_category.category }}">
+        <input type="submit">
+    </div>
+</form>
+
+{% endblock %}
